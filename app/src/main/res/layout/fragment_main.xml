@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragment.MainFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/main_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to the Directory"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:layout_marginBottom="24dp"/>
+
+        <Button
+            android:id="@+id/viewPeopleBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View People Directory"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/viewRoomsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Rooms Status"/>
+
+    </LinearLayout>
+
+
+</FrameLayout>

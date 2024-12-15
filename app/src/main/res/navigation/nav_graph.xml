@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/peopleListFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.creators.dec13_vm_app_anton.ui.fragment.LoginFragment"
+        android:label="Login" >
+        <action
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@id/mainFragment"/>
+        <action
+            android:id="@+id/action_loginFragment_to_signupFragment"
+            app:destination="@id/signupFragment"/>
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.creators.dec13_vm_app_anton.ui.fragment.SignupFragment"
+        android:label="Sign Up"/>
+
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.creators.dec13_vm_app_anton.ui.fragment.ForgotPasswordFragment"
+        android:label="Forgot Password"/>
+
+    <fragment android:id="@+id/mainFragment"
+        android:name="com.creators.dec13_vm_app_anton.ui.fragment.MainFragment"
+        android:label="Main">
+        <action
+            android:id="@+id/action_mainFragment_to_peopleListFragment"
+            app:destination="@id/peopleListFragment" />
+
+        <action
+            android:id="@+id/action_mainFragment_to_roomsListFragment"
+            app:destination="@id/roomsListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/personDetailFragment"
+        android:name="com.creators.dec13_vm_app_anton.ui.fragment.PersonDetailFragment"
+        android:label="Person Detail">
+        <argument
+            android:name="personId"
+            app:argType="string"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/peopleListFragment"
+        android:name="com.creators.dec13_vm_app_anton.ui.fragment.PeopleListFragment"
+        android:label="People List" >
+        <action
+            android:id="@+id/action_peopleListFragment_to_personDetailFragment"
+            app:destination="@id/personDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/roomsListFragment"
+        android:name="com.creators.dec13_vm_app_anton.ui.fragment.RoomsFragment"
+        android:label="Rooms List" />
+</navigation>
