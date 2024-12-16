@@ -23,9 +23,26 @@ class AuthViewModel @Inject constructor(
             .addOnCompleteListener { task -> callback(task.isSuccessful) }
     }
 
-    fun resetPassword(email: String, callback: (Boolean) -> Unit) {
-        firebaseAuth.sendPasswordResetEmail(email)
-            .addOnCompleteListener { task -> callback(task.isSuccessful)}
+    fun resetPassword(email: String, callback: (Boolean, Exception?) -> Unit) {
+        firebaseAuth.fetchSignInMethodsForEmail(email)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val signInMethods = task.result?.signInMethods
+                    if (signInMethods?.isNotEmpty() == true) {
+                        // Email is registered, send password reset email
+                        firebaseAuth.sendPasswordResetEmail(email)
+                            .addOnCompleteListener { resetTask ->
+                                callback(resetTask.isSuccessful, resetTask.exception)
+                            }
+                    } else {
+                        // Email is not registered
+                        callback(false, Exception("Email is not registered"))
+                    }
+                } else {
+                    // Error fetching sign-in methods
+                    callback(false, task.exception)
+                }
+            }
     }
 
     fun signInWithGitHub(activity: Activity, callback: (Boolean) -> Unit) {

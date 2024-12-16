@@ -32,12 +32,12 @@ class ForgotPasswordFragment : Fragment(R.layout.fragment_forgot_password) {
                 return@setOnClickListener
             }
 
-            authViewModel.resetPassword(email) { success ->
-                if (success) {
+            authViewModel.resetPassword(email) { isSuccess, exception ->
+                if (isSuccess) {
                     Toast.makeText(requireContext(), "Reset link sent to your email", Toast.LENGTH_SHORT).show()
                     findNavController().popBackStack() // Navigate back to the LoginFragment
                 } else {
-                    Toast.makeText(requireContext(), "Failed to send reset email", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Failed to send reset email: ${exception.toString()}", Toast.LENGTH_LONG).show()
                 }
             }
         }

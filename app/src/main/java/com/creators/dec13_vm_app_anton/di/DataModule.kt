@@ -2,7 +2,6 @@ package com.creators.dec13_vm_app_anton.di
 
 import com.creators.dec13_vm_app_anton.data.api.ApiService
 import com.google.firebase.auth.FirebaseAuth
-import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
