@@ -6,7 +6,7 @@ plugins {
     id("com.google.dagger.hilt.android")
     alias(libs.plugins.google.gms.google.services)
     alias(libs.plugins.google.firebase.crashlytics)
-
+    id("androidx.navigation.safeargs.kotlin")
 
 }
 
@@ -77,8 +77,6 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-moshi:2.11.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
-    runtimeOnly("com.squareup.moshi:moshi-kotlin:1.15.2")
-    implementation("androidx.navigation.safeargs.kotlin:androidx.navigation.safeargs.kotlin.gradle.plugin:2.8.5")
 
 
 }
