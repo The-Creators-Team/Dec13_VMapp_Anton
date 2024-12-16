@@ -1,6 +1,7 @@
 package com.creators.dec13_vm_app_anton.ui.view_model
 
 import android.app.Activity
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.OAuthProvider
@@ -11,6 +12,7 @@ import javax.inject.Inject
 class AuthViewModel @Inject constructor(
     private val firebaseAuth: FirebaseAuth
 ) : ViewModel() {
+    private val TAG = "AuthViewModel"
     fun signInWithEmail(email: String, password: String, callback: (Boolean) -> Unit) {
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task -> callback(task.isSuccessful) }
@@ -30,11 +32,14 @@ class AuthViewModel @Inject constructor(
         val provider = OAuthProvider.newBuilder("github.com")
         firebaseAuth.startActivityForSignInWithProvider(activity, provider.build())
             .addOnCompleteListener { task -> callback(task.isSuccessful) }
+
     }
 
     fun signInWithYahoo(activity: Activity, callback: (Boolean) -> Unit) {
         val provider = OAuthProvider.newBuilder("yahoo.com")
         firebaseAuth.startActivityForSignInWithProvider(activity, provider.build())
-            .addOnCompleteListener { task -> callback(task.isSuccessful) }
+            .addOnCompleteListener { task ->
+                task.exception?.toString()?.let { Log.d(TAG, it) }
+                callback(task.isSuccessful) }
     }
 }

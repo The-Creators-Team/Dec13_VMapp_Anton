@@ -1,6 +1,7 @@
 package com.creators.dec13_vm_app_anton.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +12,16 @@ import androidx.navigation.fragment.findNavController
 import com.creators.dec13_vm_app_anton.R
 import com.creators.dec13_vm_app_anton.databinding.FragmentLoginBinding
 import com.creators.dec13_vm_app_anton.ui.view_model.AuthViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.OAuthProvider
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class LoginFragment : Fragment(R.layout.fragment_login) {
     private val authViewModel: AuthViewModel by viewModels()
+
+    private val TAG = "LoginFragment"
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
@@ -45,11 +50,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
 
         binding.githubBtn.setOnClickListener {
+            val provider = OAuthProvider.newBuilder("github.com")
             authViewModel.signInWithGitHub(requireActivity()) { success ->
                 if (success) {
                     findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
                 } else {
-                    Toast.makeText(requireContext(), "GitHub sign-in failed", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Login failed", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -68,5 +74,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
 }
