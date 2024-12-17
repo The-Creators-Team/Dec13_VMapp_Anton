@@ -1,7 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.Dec13_VM_App_Anton" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+
+    <!-- Base application theme for night mode -->
+    <style name="Theme.VirginMoney" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">#C40202</item>
+        <item name="colorPrimaryVariant">#A00002</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+
+        <!-- Secondary color -->
+        <item name="colorSecondary">#00796B</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+
+        <!-- Tertiary color -->
+        <item name="colorTertiary">#FF9800</item>
+        <item name="colorOnTertiary">#000000</item>
+
+        <!-- Background and surface colors -->
+        <item name="backgroundColor">#121212</item>
+        <item name="colorOnBackground">#FFFFFF</item>
+        <item name="colorSurface">#1F1F1F</item>
+        <item name="colorOnSurface">#FFFFFF</item>
+
+        <!-- Error color -->
+        <item name="colorError">#CF6679</item>
+        <item name="colorOnError">#000000</item>
+
+        <!-- Elevated surface colors -->
+        <item name="colorSurfaceVariant">#49454F</item>
+        <item name="colorOnSurfaceVariant">#E7E0EC</item>
+
+        <!-- Typography -->
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#B3B3B3</item>
     </style>
 </resources>

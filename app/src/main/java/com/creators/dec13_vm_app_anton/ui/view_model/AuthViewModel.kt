@@ -13,8 +13,10 @@ class AuthViewModel @Inject constructor(
     private val firebaseAuth: FirebaseAuth
 ) : ViewModel() {
     private val TAG = "AuthViewModel"
-    fun signInWithEmail(email: String, password: String, callback: (Boolean) -> Unit) {
-        firebaseAuth.signInWithEmailAndPassword(email, password)
+    fun signInWithEmail(email: String?, password: String?, callback: (Boolean) -> Unit) {
+        val emailParam = if (email.isNullOrBlank()) "aaa" else email
+        val passwordParam = if(password.isNullOrBlank()) "aaa" else password
+        firebaseAuth.signInWithEmailAndPassword(emailParam, passwordParam)
             .addOnCompleteListener { task -> callback(task.isSuccessful) }
     }
 
